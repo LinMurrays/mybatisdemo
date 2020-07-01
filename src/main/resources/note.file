@@ -1,0 +1,39 @@
+将需要启动就加载的自动配置类，配置在META‐INF/spring.factories
+
+docker 运行docker
+docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq rabbitmq
+
+docker pull redis
+docker 运行redis
+docker run -d -p 6379:6379 --name myredis redis
+
+docker 运行mysql
+docker run -p 3306:3306 --name mysql011 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+docker 运行rabbitmq
+#未知原因，但是下面这个命令访问即便是在虚拟机里面也访问不了
+ docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq
+ #这个命令可以在虚拟机里访问rabbitmq，正确发布应用也可以访问了，上面的访问不了
+ docker pull rabbitmq:management
+ docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:management
+默认账号密码是guest guest
+
+ docker logs container‐id（或者容器名字）
+
+#全文搜索引擎，底层是Lucene，因为启动默认会占两个G的内存，所以要设置所占的jvm大小
+#这个命令是elasticsearch官方推荐的，可以拉下来，但是启动不了，不明原因
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+
+#这个命令是教程上直接推荐的，换了新的Linux服务器之后可以使用
+docker pull elasticsearch
+#启动命令就用这个
+docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9200:9200 -p 9300:9300 --name ES01 5acf0e8da90b
+
+#这个版本是适应继承那个测试使用的版本,暂时docker容器启动不了那个elasticsearch，所以这个测试无法完成
+docker pull elasticsearch:6.5.0
+#启动命令就用这个
+docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9201:9200 -p 9301:9300 --name ES02 ff171d17e77c
+
+#zookeeper
+docker pull zookeeper
+docker run --name zk01 -p 2181:2181 --restart always -d zookeeper
