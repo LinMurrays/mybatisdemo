@@ -1,5 +1,5 @@
 org.springframework.context.ApplicationContextInitializer=\
-springdemo02.mybatisdemo.dataNconfig.listener.HelloApplicationContextInitializer
+demo.mybatisdemo.dataNconfig.listener.HelloApplicationContextInitializer
 
 org.springframework.boot.SpringApplicationRunListener=\
-springdemo02.mybatisdemo.dataNconfig.listener.HelloSpringApplicationRunListener
+demo.mybatisdemo.dataNconfig.listener.HelloSpringApplicationRunListener
